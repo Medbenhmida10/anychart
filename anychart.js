@@ -80,7 +80,7 @@ var getScriptPromisify = (src) => {
       chart.animation(true);
 
       // force chart to stack values by Y scale.
-      chart.yScale().stackMode('percent');
+      chart.yScale().stackMode('value');
 
       // set chart title text settings
       chart.title('Regional ratio of cosmetic products sales');
