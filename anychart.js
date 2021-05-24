@@ -53,7 +53,7 @@ var getScriptPromisify = (src) => {
         anychart.onDocumentReady(function() {
           // create column chart
           var dataSet = anychart.data.set([
-        ['Nail polish', 12814, 3054, 4376, NA],
+        ['Nail polish', 12814, 3054, 4376, 0],
         ['Eyebrow pencil', 13012, 5067, 3987, 3932],
         ['Rouge', 11624, 7004, 3574, 5221],
         ['Lipstick', 8814, 9054, 4376, 9256],
