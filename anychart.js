@@ -110,7 +110,7 @@ var getScriptPromisify = (src) => {
       setupSeriesLabels(series, 'PDELTA');
 
 
-      // turn on legend
+      // turn on l egend
       chart.legend().enabled(true).fontSize(14).padding([0, 0, 15, 0]);
 
       chart.interactivity().hoverMode('by-x');
