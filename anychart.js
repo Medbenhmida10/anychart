@@ -53,29 +53,25 @@ var getScriptPromisify = (src) => {
         anychart.onDocumentReady(function() {
           // create column chart
                     // create column chart
-             var dataSet = anychart.data.set([
-        ['Nail polish', 12814, 3054, 4376, 4222],
-        ['Eyebrow pencil', 13012, 5067, 3987, 3932],
-        ['Rouge', 11624, 7004, 3574, 5221],
-        ['Lipstick', 8814, 9054, 4376, 9256],
-        ['Eyeshadows', 12998, 12043, 4572, 3308],
-        ['Eyeliner', 12321, 15067, 3417, 5432],
-        ['Foundation', 10342, 10119, 5231, 13701],
-        ['Lip gloss', 22998, 12043, 4572, 4008],
-        ['Mascara', 11261, 10419, 6134, 18712]
+            var dataSet = anychart.data.set([
+
+        ['A', -20, 0, '-120', '120', -100, 100],
+        ['B', 0, 20, '-180', '180', -200, 200],
+        ['C', 0, 50, '-250', '250', -300, 300],
+        ['D', -50, 0, '-200', '200', -150, 150],
+        ['E', 0, 70, '-180', '180', -250, 250],
+        ['F', -46, 0, '-250', '250', -204, 204]
       ]);
 
       // map data for the first series, take x from the zero column and value from the first column of data set
       var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
 
       // map data for the second series, take x from the zero column and value from the second column of data set
-      var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+      var secondSeriesData = dataSet.mapAs({ x: 0, value: 6 });
 
       // map data for the second series, take x from the zero column and value from the third column of data set
       var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
 
-      // map data for the fourth series, take x from the zero column and value from the fourth column of data set
-      var fourthSeriesData = dataSet.mapAs({ x: 0, value: 4 });
 
       // create bar chart
       var chart = anychart.bar();
@@ -103,19 +99,16 @@ var getScriptPromisify = (src) => {
 
       // create first series with mapped data
       series = chart.bar(firstSeriesData);
-      setupSeriesLabels(series, 'Florida');
+      setupSeriesLabels(series, 'NDELTA');
 
       // create second series with mapped data
       series = chart.bar(secondSeriesData);
-      setupSeriesLabels(series, 'Texas');
+      setupSeriesLabels(series, 'TARGET');
 
       // create third series with mapped data
       series = chart.bar(thirdSeriesData);
-      setupSeriesLabels(series, 'Arizona');
+      setupSeriesLabels(series, 'PDELTA');
 
-      // create fourth series with mapped data
-      series = chart.bar(fourthSeriesData);
-      setupSeriesLabels(series, 'Nevada');
 
       // turn on legend
       chart.legend().enabled(true).fontSize(14).padding([0, 0, 15, 0]);
@@ -123,7 +116,7 @@ var getScriptPromisify = (src) => {
       chart.interactivity().hoverMode('by-x');
 
       chart.tooltip().displayMode('union').valuePrefix('$');
-
+      
           // set container id for the chart
           chart.container(root1);
       
