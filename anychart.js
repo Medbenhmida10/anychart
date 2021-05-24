@@ -52,78 +52,20 @@ var getScriptPromisify = (src) => {
 
         anychart.onDocumentReady(function() {
           // create column chart
-          var dataSet = anychart.data.set([
-        ['Nail polish', 12814, 3054, 4376, 4222],
-        ['Eyebrow pencil', 13012, 5067, 3987, 3932],
-        ['Rouge', 11624, 7004, 3574, 5221],
-        ['Lipstick', 8814, 9054, 4376, 9256],
-        ['Eyeshadows', 12998, 12043, 4572, 3308],
-        ['Eyeliner', 12321, 15067, 3417, 5432],
-        ['Foundation', 10342, 10119, 5231, 13701],
-        ['Lip gloss', 22998, 12043, 4572, 4008],
-        ['Mascara', 11261, 10419, 6134, 18712]
-      ]);
-
-      // map data for the first series, take x from the zero column and value from the first column of data set
-      var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
-
-      // map data for the second series, take x from the zero column and value from the second column of data set
-      var secondSeriesData = dataSet.mapAs({ x: 0, value: 2 });
-
-      // map data for the second series, take x from the zero column and value from the third column of data set
-      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
-
-      // map data for the fourth series, take x from the zero column and value from the fourth column of data set
-      var fourthSeriesData = dataSet.mapAs({ x: 0, value: 4 });
-
-      // create bar chart
-      var chart = anychart.bar();
-
-      // turn on chart animation
-      chart.animation(true);
-
-      // force chart to stack values by Y scale.
-      chart.yScale().stackMode('percent');
-
-      // set chart title text settings
-      chart.title('Regional ratio of cosmetic products sales');
-
-      // set yAxis labels formatting, force it to add % to values
-      chart.yAxis(0).labels().format('{%Value}%');
-
-      // helper function to setup label settings for all series
-      var setupSeriesLabels = function (series, name) {
-        series.name(name).stroke('3 #fff 1');
-        series.hovered().stroke('3 #fff 1');
-      };
-
-      // temp variable to store series instance
-      var series;
-
-      // create first series with mapped data
-      series = chart.bar(firstSeriesData);
-      setupSeriesLabels(series, 'Florida');
-
-      // create second series with mapped data
-      series = chart.bar(secondSeriesData);
-      setupSeriesLabels(series, 'Texas');
-
-      // create third series with mapped data
-      series = chart.bar(thirdSeriesData);
-      setupSeriesLabels(series, 'Arizona');
-
-      // create fourth series with mapped data
-      series = chart.bar(fourthSeriesData);
-      setupSeriesLabels(series, 'Nevada');
-
-      // turn on legend
-      chart.legend().enabled(true).fontSize(14).padding([0, 0, 15, 0]);
-
-      chart.interactivity().hoverMode('by-x');
-
-      chart.tooltip().displayMode('union').valuePrefix('$');
-
+                    // create column chart
+          var chart = anychart.column();
       
+          // set chart title
+          chart.title('Top 10 Cosmetic Products by Revenue');
+      
+          // set chart data
+          chart.data([
+              {x: 'Rouge', value: 805400},
+              {x: 'Foundation', value: 94190},
+              {x: 'Mascara', value: 102610},
+              {x: 'Lip gloss', value: 110430},
+              {x: 'Pomade', value: 128000}
+          ]);
           // set container id for the chart
           chart.container(root1);
       
