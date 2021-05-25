@@ -51,9 +51,8 @@ var getScriptPromisify = (src) => {
         console.log('Hi');
 
         anychart.onDocumentReady(function() {
-          // create column chart
-                    // create column chart
-            var dataSet = anychart.data.set([
+      // data
+   var dataSet = anychart.data.set([
 
         ['A', -20, 0, '-120', '120', -100, 100],
         ['B', 0, 20, '-180', '180', -200, 200],
@@ -70,7 +69,7 @@ var getScriptPromisify = (src) => {
       var secondSeriesData = dataSet.mapAs({ x: 0, value: 6 });
 
       // map data for the second series, take x from the zero column and value from the third column of data set
-      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 3 });
+      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 2 });
 
 
       // create bar chart
@@ -82,11 +81,8 @@ var getScriptPromisify = (src) => {
       // force chart to stack values by Y scale.
       chart.yScale().stackMode('value');
 
-      // set chart title text settings
-      chart.title('Regional ratio of cosmetic products sales');
-
       // set yAxis labels formatting, force it to add % to values
-      chart.yAxis(0).labels().format('{%Value}%');
+      chart.yAxis(0).labels();
 
       // helper function to setup label settings for all series
       var setupSeriesLabels = function (series, name) {
@@ -98,31 +94,74 @@ var getScriptPromisify = (src) => {
       var series;
 
       // create first series with mapped data
-      series = chart.bar(firstSeriesData);
-      setupSeriesLabels(series, 'NDELTA');
+ 
 
       // create second series with mapped data
-      series = chart.bar(secondSeriesData);
+      series = chart.bar(secondSeriesData).fill('GRAY');
       setupSeriesLabels(series, 'TARGET');
 
       // create third series with mapped data
-      series = chart.bar(thirdSeriesData);
+      series = chart.bar(thirdSeriesData).fill('GREEN');
       setupSeriesLabels(series, 'PDELTA');
 
+     series = chart.bar(firstSeriesData).fill('RED');
+      setupSeriesLabels(series, 'NDELTA');
 
-      // turn on l egend
-      chart.legend().enabled(true).fontSize(14).padding([0, 0, 15, 0]);
+ chart.bounds(0, 0, "50%", "100%");     
+  // draw
+  chart.container("container");
+  chart.draw();
+        // map data for the first series, take x from the zero column and value from the first column of data set
+      var firstSeriesData2 = dataSet.mapAs({ x: 0, value: 1 });
 
-      chart.interactivity().hoverMode('by-x');
+      // map data for the second series, take x from the zero column and value from the second column of data set
+      var secondSeriesData2 = dataSet.mapAs({ x: 0, value: 6 });
 
-      chart.tooltip().displayMode('union').valuePrefix('$');
-      
-          // set container id for the chart
-          chart.container(root1);
-      
-          // initiate chart drawing
-          chart.draw();
-      });
+      // map data for the second series, take x from the zero column and value from the third column of data set
+      var thirdSeriesData2 = dataSet.mapAs({ x: 0, value: 2 });
+
+
+      // create bar chart
+      var chart2 = anychart.bar();
+
+      // turn on chart animation
+      chart2.animation(true);
+
+      // force chart to stack values by Y scale.
+      chart2.yScale().stackMode('value');
+
+
+      // set yAxis labels formatting, force it to add % to values
+      chart2.yAxis(0).labels();
+
+      // helper function to setup label settings for all series
+      var setupSeriesLabels2 = function (series2, name2) {
+        series2.name(name2).stroke('3 #fff 1');
+        series2.hovered().stroke('3 #fff 1');
+      };
+
+      // temp variable to store series instance
+      var series2;
+
+      // create first series with mapped data
+ 
+
+      // create second series with mapped data
+      series2 = chart2.bar(secondSeriesData2).fill('GRAY');
+      setupSeriesLabels2(series2, 'TARGET');
+
+      // create third series with mapped data
+      series2 = chart2.bar(thirdSeriesData2).fill('GREEN');
+      setupSeriesLabels2(series2, 'PDELTA');
+
+     series2 = chart2.bar(firstSeriesData2).fill('RED');
+      setupSeriesLabels2(series2, 'NDELTA');
+
+ chart2.bounds("50%", 0, "50%", "100%");     
+  // draw
+  chart2.container("container");
+  chart2.draw();
+            });
   
       }
     }
