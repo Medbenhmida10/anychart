@@ -50,8 +50,9 @@ var getScriptPromisify = (src) => {
 
         console.log('Hi');
 
-        anychart.onDocumentReady(function() {
-      // data
+        anychart.onDocumentReady(function () {
+ var stage = anychart.graphics.create("container");
+  // data
    var dataSet = anychart.data.set([
 
         ['A', -20, 0, '-120', '120', -100, 100],
@@ -109,7 +110,7 @@ var getScriptPromisify = (src) => {
 
  chart.bounds(0, 0, "50%", "100%");     
   // draw
-  chart.container("container");
+  chart.container(stage);
   chart.draw();
         // map data for the first series, take x from the zero column and value from the first column of data set
       var firstSeriesData2 = dataSet.mapAs({ x: 0, value: 1 });
@@ -159,9 +160,9 @@ var getScriptPromisify = (src) => {
 
  chart2.bounds("50%", 0, "50%", "100%");     
   // draw
-  chart2.container("container");
+  chart2.container(stage);
   chart2.draw();
-            });
+});
   
       }
     }
