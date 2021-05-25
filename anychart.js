@@ -53,24 +53,25 @@ var getScriptPromisify = (src) => {
         anychart.onDocumentReady(function () {
  var stage = anychart.graphics.create("container");
   // data
+  
    var dataSet = anychart.data.set([
 
         ['A', -20, 0, '-120', '120', -100, 100],
         ['B', 0, 20, '-180', '180', -200, 200],
         ['C', 0, 50, '-250', '250', -300, 300],
         ['D', -50, 0, '-200', '200', -150, 150],
-        ['E', 0, 70, '-180', '180', -250, 250],
-        ['F', -46, 0, '-250', '250', -204, 204]
+        ['E', 0, 70, '-160', '160', -250, 250],
+        ['F', -46, 0, '-150', '150', -204, 204]
       ]);
 
       // map data for the first series, take x from the zero column and value from the first column of data set
-      var firstSeriesData = dataSet.mapAs({ x: 0, value: 1 });
+      var firstSeriesData = dataSet.mapAs({ x: 0, value: 1});
 
       // map data for the second series, take x from the zero column and value from the second column of data set
       var secondSeriesData = dataSet.mapAs({ x: 0, value: 6 });
 
       // map data for the second series, take x from the zero column and value from the third column of data set
-      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 2 });
+      var thirdSeriesData = dataSet.mapAs({ x: 0, value: 2});
 
 
       // create bar chart
@@ -81,9 +82,12 @@ var getScriptPromisify = (src) => {
 
       // force chart to stack values by Y scale.
       chart.yScale().stackMode('value');
-
+    
+ chart.xAxis(0).labels();
+chart.xAxis(0).stroke("white");
+  chart.xAxis(0).ticks(false);
       // set yAxis labels formatting, force it to add % to values
-      chart.yAxis(0).labels();
+      chart.yAxis(0).enabled(false);
 
       // helper function to setup label settings for all series
       var setupSeriesLabels = function (series, name) {
@@ -130,10 +134,13 @@ var getScriptPromisify = (src) => {
 
       // force chart to stack values by Y scale.
       chart2.yScale().stackMode('value');
-
-
+chart2.xAxis(0).stroke("white");
+  chart2.xAxis(0).ticks(false);
+chart2.yAxis(1).orientation("right");
+chart2.yAxis(1).stroke("white");
+  chart2.yAxis(1).ticks(false);
       // set yAxis labels formatting, force it to add % to values
-      chart2.yAxis(0).labels();
+      chart2.yAxis(0).enabled(false);
 
       // helper function to setup label settings for all series
       var setupSeriesLabels2 = function (series2, name2) {
